@@ -8,13 +8,23 @@ namespace Experiments.EnforcedObjectState
         {
             var reactor = new NuclearReactor();
 
-            ((IPoweredDownState) reactor.State).PowerUp();
-            ((IPoweringUpState) reactor.State).RigForNormalRunning();
-            
-            ((IRunningState) reactor.State).SetPowerLevel(10);
-            ((IRunningState) reactor.State).SetPowerLevel(20);
-            ((IRunningState) reactor.State).SetPowerLevel(30);
-            
+            // Dynamic 
+            reactor.State.PowerUp();
+            reactor.State.RigForNormalRunning();
+            reactor.State.SetPowerLevel(10);
+            reactor.State.SetPowerLevel(20);
+            reactor.State.RigForNormalRunning(); // not allowed
+
+
+            //((IPoweredDownState) reactor.State).PowerUp();
+            //((IPoweringUpState) reactor.State).RigForNormalRunning();
+            //((IRunningState) reactor.State).SetPowerLevel(10);
+            //((IRunningState) reactor.State).SetPowerLevel(20);
+            //((IRunningState) reactor.State).SetPowerLevel(30);
+
+            Console.WriteLine(reactor.CoreTemperature);
+
+
             // Only state-based features are available on object
 
             var reactor2 = new NuclearReactor();

@@ -11,6 +11,6 @@
 
         public int CoreTemperature => _innerWorkings.CoreTemperature;
 
-        public IReactorState State => _innerWorkings.State;
+        public dynamic State => _innerWorkings.State;
     }
 }
